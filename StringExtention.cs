@@ -14,19 +14,6 @@ namespace iXtensions
         public static string RemoveLast(this string Value)
             => String.IsNullOrEmpty(Value) ? "" : Value.Remove(Value.Length - 1);
 
-        public static bool ValidUrl(this string Url)
-        {
-            try
-            {
-                HttpWebRequest rq = (HttpWebRequest)WebRequest.Create(Url);
-                var response = (HttpWebResponse)rq.GetResponse();
-                if (response.StatusCode == HttpStatusCode.OK)
-                    return true;
-                return false;
-            }
-            catch { return false; }
-        }
-
         public static bool EqualList(this string ValorVerify, params string[] Value)
         {
             int r = 0;

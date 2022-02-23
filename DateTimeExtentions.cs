@@ -33,7 +33,7 @@ namespace iXtensions
             return ts;
         }
 
-        public static string CalcTime(this DateTime? HoraIni, DateTime? HoraFim)
+        public static string? CalcTime(this DateTime? HoraIni, DateTime? HoraFim)
         {
             TimeSpan? ts;
             ts = HoraIni - HoraFim;
@@ -99,14 +99,12 @@ namespace iXtensions
         }
 
         public static string GetDayName(this DateTime Value)
-        {
-            return CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(Value.DayOfWeek).ToFirstUpper();
-        }
+            => CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(Value.DayOfWeek).ToFirstUpper();
+
 
         public static string GetMonthName(this DateTime Month)
-        {
-            return CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Month.Month).ToFirstUpper();
-        }
+           => CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Month.Month).ToFirstUpper();
+
 
     }
 }

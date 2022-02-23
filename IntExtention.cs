@@ -13,9 +13,8 @@ namespace iXtensions
         }
 
         public static string GetMonthName(this int Month)
-        {
-            return CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Month).ToFirstUpper();
-        }
+            => CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Month).ToFirstUpper();
+
 
 
         private static readonly string[] suffixes = { "Bytes", "KB", "MB", "GB", "TB", "PB" };
