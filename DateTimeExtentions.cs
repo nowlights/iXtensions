@@ -1,6 +1,8 @@
 using System;
 
-namespace iXtentions
+
+
+namespace iXtensions
 {
     public static class DateTimeExtentions
     {

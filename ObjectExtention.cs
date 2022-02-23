@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace iXtentions
+namespace iXtensions
 {
     public static class ObjectExtention
     {

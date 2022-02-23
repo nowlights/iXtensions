@@ -1,6 +1,6 @@
 using System.Globalization;
 
-namespace iXtentions
+namespace iXtensions
 {
     public static class IntExtention
     {
