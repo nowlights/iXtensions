@@ -6,7 +6,8 @@ namespace iXtensions
     public static class StringExtention
     {
         public static int ToInteger(this string Value)
-         => Convert.ToInt32(Value);
+            => Convert.ToInt32(Value);
+
         public static bool SecurityString(this string value)
             => String.IsNullOrEmpty(value) ? true : value.MultContains("<", ">") ? false : true;
 
@@ -55,7 +56,7 @@ namespace iXtensions
 
 
         public static string FirstLetter(this string Value, int ToSize = 1, string returnWith = "")
-         => !String.IsNullOrEmpty(Value) && Value.Length >= 1 && Value.Length > ToSize ? Value.Substring(0, ToSize) + returnWith : Value;
+            => !String.IsNullOrEmpty(Value) && Value.Length >= 1 && Value.Length > ToSize ? Value.Substring(0, ToSize) + returnWith : Value;
 
 
         public static bool LengthRange(this string Value, int start, int end)
