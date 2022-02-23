@@ -1,6 +1,5 @@
 using System;
-
-
+using System.Globalization;
 
 namespace iXtensions
 {
@@ -97,6 +96,16 @@ namespace iXtensions
             else if (DateTime.Now.StartOfWeek(DayOfWeek.Monday) < dt) return $"esta semana, {dt.ToString("dd/MM")} às {dt.ToString("HH:mm")}";
             else if (dt.Month == DateTime.Now.Month) return $"este mês, {dt.ToString("dd/MM")} às {dt.ToString("HH:mm")}";
             else return $"Em {dt.ToString("dd/MM/yyyy")} às {dt.ToString("HH:mm")}";
+        }
+
+        public static string GetDayName(this DateTime Value)
+        {
+            return CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(Value.DayOfWeek).ToFirstUpper();
+        }
+
+        public static string GetMonthName(this DateTime Month)
+        {
+            return CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Month.Month).ToFirstUpper();
         }
 
     }

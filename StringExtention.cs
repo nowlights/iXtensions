@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 
 namespace iXtensions
 {
@@ -26,6 +27,19 @@ namespace iXtensions
             string newValue = Value.Remove(Value.Length - 1);
 
             return newValue;
+        }
+
+         public static bool ValidUrl(this string Url)
+        {
+            try
+            {
+                HttpWebRequest rq = (HttpWebRequest)WebRequest.Create(Url);
+                var response = (HttpWebResponse)rq.GetResponse();
+                if (response.StatusCode == HttpStatusCode.OK)
+                    return true;
+                return false;
+            }
+            catch { return false; }
         }
 
         public static bool EqualList(this string ValorVerify, params string[] Value)
@@ -63,7 +77,6 @@ namespace iXtensions
 
         public static string ToUpperIfNotNull(this string value)
         {
-#pragma warning disable CS8603 // Rethrow to preserve stack details
             return value == null ? value : value.ToUpper();
 
         }
@@ -176,6 +189,16 @@ namespace iXtensions
                 else throw new System.Exception($"Erro ao converter {splitado[i]} em int");
             }
             return data;
+        }
+
+
+        public static string ToMoney(this string Value)
+        {
+            try
+            {
+                return Convert.ToDouble(Value).ToString("N2");
+            }
+            catch (System.Exception) { return "N/A"; }
         }
 
         
