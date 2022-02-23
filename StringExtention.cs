@@ -6,30 +6,14 @@ namespace iXtensions
     public static class StringExtention
     {
         public static int ToInteger(this string Value)
-        {
-            return Convert.ToInt32(Value);
-
-        }
-
-
+         => Convert.ToInt32(Value);
         public static bool SecurityString(this string value)
             => String.IsNullOrEmpty(value) ? true : value.MultContains("<", ">") ? false : true;
 
-
         public static string RemoveLast(this string Value)
-        {
-            if (Value == null)
-                return "";
+            => String.IsNullOrEmpty(Value) ? "" : Value.Remove(Value.Length - 1);
 
-            if (Value == "")
-                return "";
-
-            string newValue = Value.Remove(Value.Length - 1);
-
-            return newValue;
-        }
-
-         public static bool ValidUrl(this string Url)
+        public static bool ValidUrl(this string Url)
         {
             try
             {
@@ -46,66 +30,40 @@ namespace iXtensions
         {
             int r = 0;
             foreach (var i in Value)
-            {
                 if (i == ValorVerify)
-                {
                     r++;
-                }
-            }
-            if (r >= 1)
-                return true;
-
-            return false;
-
+            return r >= 1;
         }
 
         public static bool MultContains(this string ValorVerify, params string[] Value)
         {
             int r = 0;
             foreach (string i in Value)
-            {
                 if (ValorVerify.Contains(i))
                     r++;
-            }
-
-            if (r >= 1)
-                return true;
-
-            return false;
+            return r >= 1;
         }
 
 
         public static string ToUpperIfNotNull(this string value)
-        {
-            return value == null ? value : value.ToUpper();
+            => String.IsNullOrEmpty(value) ? value : value.ToUpper();
 
-        }
+
 
         public static string ToFirstUpper(this string value)
-        {
-            return char.ToUpper(value[0]) + value.Substring(1);
-        }
-        
-        public static string FirstLetter(this string Value, int ToSize = 1, string returnWith = null)
-        {
-            if (Value != null && Value.Length >= 1 && Value.Length > ToSize)
-                return Value.Substring(0, ToSize) + returnWith;
-            else return Value;
-        }
+            => char.ToUpper(value[0]) + value.Substring(1);
+
+
+        public static string FirstLetter(this string Value, int ToSize = 1, string returnWith = "")
+         => !String.IsNullOrEmpty(Value) && Value.Length >= 1 && Value.Length > ToSize ? Value.Substring(0, ToSize) + returnWith : Value;
 
 
         public static bool LengthRange(this string Value, int start, int end)
-        {
-            if (Value.Length >= start && Value.Length <= end) return true; else return false;
-        }
+            => Value.Length >= start && Value.Length <= end;
 
         public static bool isInt(this string Value)
         {
-            try
-            {
-                Convert.ToDouble(Value);
-                return true;
-            }
+            try { Convert.ToDouble(Value); return true; }
             catch (System.Exception) { return false; }
         }
 
@@ -116,25 +74,19 @@ namespace iXtensions
                 string r = Value.Replace("(", "").Replace(")", "").Replace("-", "").Replace(" ", "").Replace(".", "");
                 if (r.isInt() & r.LengthRange(9, 11)) return true; else return false;
             }
-            catch (System.Exception)
-            {
-                return false;
-            }
+            catch (System.Exception) { return false; }
         }
 
         public static string VerifyElseReturn(this string Value, string Return, params string[] Verify)
         {
             foreach (string i in Verify)
-            {
                 if (Value.ToLower() == i.ToLower()) return i;
-            }
+
             return Return;
         }
 
         public static string IfNullThenReturn(this string Value, string Return)
-        {
-            if (String.IsNullOrEmpty(Value)) return Return; else return Value;
-        }
+            => String.IsNullOrEmpty(Value) ? Return : Value;
 
 
 
@@ -151,10 +103,9 @@ namespace iXtensions
         public static bool ContainsStringInListString(List<string> listValue, string value)
         {
             foreach (var i in listValue)
-            {
                 if (i == value)
                     return true;
-            }
+
             return false;
         }
 
@@ -201,7 +152,7 @@ namespace iXtensions
             catch (System.Exception) { return "N/A"; }
         }
 
-        
+
 
 
 
