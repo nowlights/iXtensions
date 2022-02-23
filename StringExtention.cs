@@ -141,6 +141,8 @@ namespace iXtensions
         }
 
 
+        public static T ToEnum<T>(this string value)
+            => (T)Enum.Parse(typeof(T), value, true);
 
 
 
