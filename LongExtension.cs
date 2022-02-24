@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace iXtensions
 {
-    public static class LongExtentions
+    public static class LongExtension
     {
         public static string NomeDoMes(this long value)
         {

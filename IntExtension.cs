@@ -2,7 +2,7 @@ using System.Globalization;
 
 namespace iXtensions
 {
-    public static class IntExtention
+    public static class IntExtension
     {
         public static string NomeDoMes(this int Value)
         {

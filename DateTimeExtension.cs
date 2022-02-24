@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace iXtensions
 {
-    public static class DateTimeExtentions
+    public static class DateTimeExtension
     {
 
         public static string ToFormatDateMySql(this DateTime dt)

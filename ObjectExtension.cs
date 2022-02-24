@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace iXtensions
 {
-    public static class ObjectExtention
+    public static class ObjectExtension
     {
 #pragma warning disable CS8602
 #pragma warning disable CS8600
@@ -60,6 +60,12 @@ namespace iXtensions
             }
             catch (System.Exception) { throw; }
         }
+
+
+        #pragma warning disable 
+        
+        public static object GetPropertyValue(this object src, string propName)
+            => src.GetType().GetProperty(propName).GetValue(src, null); // possível referencia nula
 
 
 

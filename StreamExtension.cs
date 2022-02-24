@@ -4,7 +4,7 @@ using System.Text;
 
 namespace iXtensions
 {
-    public static class StreamExtentions
+    public static class StreamExtension
     {
         public static Stream ConvertToBase64(this Stream stream)
         {

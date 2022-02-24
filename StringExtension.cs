@@ -3,7 +3,7 @@ using System.Net;
 
 namespace iXtensions
 {
-    public static class StringExtention
+    public static class StringExtension
     {
         public static int ToInteger(this string Value)
             => Convert.ToInt32(Value);
