@@ -11,8 +11,11 @@ namespace iXtensions
         public static bool SecurityString(this string value)
             => String.IsNullOrEmpty(value) ? true : value.MultContains("<", ">") ? false : true;
 
-        public static string RemoveLast(this string Value)
-            => String.IsNullOrEmpty(Value) ? "" : Value.Remove(Value.Length - 1);
+        public static string RemoveLast(this string Value, int removeLength = 1)
+            => String.IsNullOrEmpty(Value) ? "" : Value.Remove(Value.Length - removeLength);
+
+        
+        
 
         public static bool EqualList(this string ValorVerify, params string[] Value)
         {
