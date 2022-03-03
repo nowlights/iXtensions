@@ -104,6 +104,20 @@ namespace iXtensions
 
         public static string GetMonthName(this DateTime Month)
            => CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Month.Month).ToFirstUpper();
+        
+        public static DateTime FirstDayOfWeek(this DateTime date)
+        {
+            DayOfWeek fdow = CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek;
+            int offset = fdow - date.DayOfWeek;
+            DateTime fdowDate = date.AddDays(offset);
+            return fdowDate;
+        }
+
+        public static DateTime LastDayOfWeek(this DateTime date)
+        {
+            DateTime ldowDate = FirstDayOfWeek(date).AddDays(6);
+            return ldowDate;
+        }
 
 
     }
