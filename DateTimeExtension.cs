@@ -283,6 +283,9 @@ namespace iXtensions
             else return false;
 
         }
+        
+        public static bool isFinalWeek(this DateTime dt)
+            => dt.DayOfWeek == DayOfWeek.Saturday || dt.DayOfWeek == DayOfWeek.Sunday || dt.DayOfWeek == DayOfWeek.Saturday || dt.DayOfWeek == DayOfWeek.Sunday ? true : false;
 
 
     }
