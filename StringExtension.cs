@@ -8,8 +8,7 @@ namespace iXtensions
         public static int ToInteger(this string Value)
             => Convert.ToInt32(Value);
 
-        public static bool SecurityString(this string value)
-            => String.IsNullOrEmpty(value) ? true : value.MultContains("<", ">", "javascript", "onchange", "onclick") ? false : true;
+       
 
         public static string RemoveLast(this string Value, int removeLength = 1)
             => String.IsNullOrEmpty(Value) ? "" : Value.Remove(Value.Length - removeLength);
@@ -88,7 +87,7 @@ namespace iXtensions
         }
 
         public static bool isSecurity(this string value)
-            => String.IsNullOrWhiteSpace(value) ? true : (value.MultContains("<", ">") ? false : true);
+            => String.IsNullOrWhiteSpace(value) ? true : (value.MultContains("<", ">", "javascript", "onchange", "onclick") ? false : true);
 
 
         public static bool ContainsStringInListString(List<string> listValue, string value)
