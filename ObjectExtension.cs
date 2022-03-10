@@ -62,10 +62,13 @@ namespace iXtensions
         }
 
 
-        #pragma warning disable 
-        
+#pragma warning disable
+
         public static object GetPropertyValue(this object src, string propName)
             => src.GetType().GetProperty(propName).GetValue(src, null); // possível referencia nula
+
+        public static object GetPropertyValue<T>(this object src, string propName)
+            => (T)src.GetType().GetProperty(propName).GetValue(src, null);
 
 
 
