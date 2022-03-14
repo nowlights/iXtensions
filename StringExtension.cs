@@ -8,13 +8,13 @@ namespace iXtensions
         public static int ToInteger(this string Value)
             => Convert.ToInt32(Value);
 
-       
+
 
         public static string RemoveLast(this string Value, int removeLength = 1)
             => String.IsNullOrEmpty(Value) ? "" : Value.Remove(Value.Length - removeLength);
 
-        
-        
+
+
 
         public static bool EqualList(this string ValorVerify, params string[] Value)
         {
@@ -146,9 +146,8 @@ namespace iXtensions
         public static T ToEnum<T>(this string value)
             => (T)Enum.Parse(typeof(T), value, true);
 
-
-
-
+        public static string SpaceCapitalLetter(this string value)
+         => System.Text.RegularExpressions.Regex.Replace(value, "[A-Z]", " $0");
 
 
     }
