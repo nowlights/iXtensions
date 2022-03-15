@@ -1,7 +1,7 @@
 using System;
 using System.Globalization;
 
-namespace iXtensions
+namespace iXtensions.Extensions
 {
     public static class LongExtension
     {

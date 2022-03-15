@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Text;
 
-namespace iXtensions
+namespace iXtensions.Extensions
 {
     public static class StreamExtension
     {

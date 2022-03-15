@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 
-namespace iXtensions
+namespace iXtensions.Extensions
 {
     public static class DateTimeExtension
     {
