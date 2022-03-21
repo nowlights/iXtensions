@@ -35,7 +35,7 @@ namespace iXtensions.Extensions
             return ts;
         }
 
-        public static string? CalcTime(this DateTime? HoraIni, DateTime? HoraFim)
+        public static string CalcTime(this DateTime? HoraIni, DateTime? HoraFim)
         {
             TimeSpan? ts;
             ts = HoraIni - HoraFim;
