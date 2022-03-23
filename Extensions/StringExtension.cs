@@ -13,8 +13,16 @@ namespace iXtensions.Extensions
 
         public static string RemoveLast(this string Value, int removeLength = 1)
             => String.IsNullOrEmpty(Value) ? "" : Value.Remove(Value.Length - removeLength);
-
-
+        
+        
+        public static string RemoveLastIfValuesIs(this string values, int removeLength, string ValueToVerifyAndRemove)
+        {
+            if (values.Length < removeLength) return values;
+            string x = values.Substring(values.Length - removeLength, removeLength);
+            if (x == ValueToVerifyAndRemove)
+                return values.Remove(values.Length - removeLength);
+            return values;
+        }
 
 
         public static bool EqualList(this string ValorVerify, params string[] Value)
