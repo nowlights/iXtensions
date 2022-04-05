@@ -1,4 +1,4 @@
-namespace iXtentions
+namespace iXtentions.Extensions
 {
     public static class DoubleExtension
     {
