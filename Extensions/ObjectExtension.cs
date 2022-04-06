@@ -40,6 +40,39 @@ namespace iXtensions.Extensions
                 return lreturn;
             }
         }
+        
+        public static List<string> GetValuesModify_OnlyProperties(this object newParam, object OldParam, params string[] OnlyPorperties)
+        {
+            List<string> lreturn = new List<string>();
+            try
+            {
+                var ListOldParam = OldParam.GetType().GetProperties();
+                //var ListNewParam = newParam.GetType().GetProperties();
+                foreach (var i in ListOldParam)
+                {
+                    //string _new _old;
+
+                    string n = "";
+                    try { n = newParam.GetType().GetProperty(i.Name).GetValue(newParam).ToString(); } catch (System.Exception) { }
+
+                    string o = "";
+                    try { o = i.GetValue(OldParam, null).ToString(); } catch (System.Exception) { }
+
+                    if (i.Name.MultContains(OnlyPorperties))
+                        if (i.PropertyType == typeof(string) ||
+                        i.PropertyType == typeof(int) ||
+                        i.PropertyType == typeof(DateTime))
+                            if (n != o)
+                                lreturn.Add($"{i.Name}: [old: {o.Replace("\r", "").Replace("\n", "")}] [new: {n.Replace("\r", "").Replace("\n", "")}]");
+
+                }
+                return lreturn;
+            }
+            catch (System.Exception)
+            {
+                return lreturn;
+            }
+        }
 
 
         public static List<string> ConvertNamePropertyObjectToListString<t>(this object obj)
