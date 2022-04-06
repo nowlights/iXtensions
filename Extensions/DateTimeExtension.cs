@@ -14,8 +14,11 @@ namespace iXtensions.Extensions
 
         public static string ToDiaMesAnoHoraMinuto(this DateTime value)
             => value.ToString("dd/MM/yyyy HH:mm");
-
-
+        
+        public static string ToDiaMesAnoHoraMinutoSec(this DateTime value)
+        {
+            return value.ToString("dd/MM/yyyy HH:mm:ss");
+        }
 
         public static string ToString(this DateTime? dt, string format)
             => dt == null ? "n/a" : ((DateTime)dt).ToString(format);
