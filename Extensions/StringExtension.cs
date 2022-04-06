@@ -157,6 +157,10 @@ namespace iXtensions.Extensions
 
         public static string SpaceCapitalLetter(this string value)
          => System.Text.RegularExpressions.Regex.Replace(value, "[A-Z]", " $0");
+        
+        
+         public static int[] CsvToIntArray(this string value)
+            => value.Split(',').Select(x => int.Parse(x)).ToArray();
 
 
     }
