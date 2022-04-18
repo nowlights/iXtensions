@@ -1,4 +1,6 @@
-namespace iXtentions.Extensions
+using System;
+
+namespace iXtensions.Extensions
 {
     public static class DoubleExtension
     {
