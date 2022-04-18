@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Net.Mail;
 
-namespace iXtensions.DataAnnotationExtentions
+namespace iXtensions.DataAnnotationExtensions
 {
     public class EmailValidation : ValidationAttribute
     {

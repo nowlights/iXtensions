@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace iXtensions.DataAnnotationExtentions
+namespace iXtensions.DataAnnotationExtensions
 {
     public class SecurityTagHtml : ValidationAttribute
     {
