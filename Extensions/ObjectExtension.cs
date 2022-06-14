@@ -103,7 +103,8 @@ namespace iXtensions.Extensions
         public static object GetPropertyValue<T>(this object src, string propName)
             => (T)src.GetType().GetProperty(propName).GetValue(src, null);
 
-
+        public static List<T> GetPage<T>(this List<T> list, int Page, int PageSize)
+            => list.Skip(Page * PageSize).Take(PageSize).ToList();
 
     }
 
