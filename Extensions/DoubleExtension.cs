@@ -23,5 +23,8 @@ namespace iXtensions.Extensions
         /// </summary>
         public static double ToMathCeiling(this double Value)
             => Math.Ceiling(Value);
+        
+        public static double ToNegative(this double Value)
+            => Value - Value * 2;
     }
 }
