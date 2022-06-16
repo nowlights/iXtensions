@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Text;
+
 namespace iXtensions.Extensions
 {
     public static class StringExtension
@@ -12,8 +15,8 @@ namespace iXtensions.Extensions
 
         public static string RemoveLast(this string Value, int removeLength = 1)
             => String.IsNullOrEmpty(Value) ? "" : Value.Remove(Value.Length - removeLength);
-        
-        
+
+
         public static string RemoveLastIfValuesIs(this string values, int removeLength, string ValueToVerifyAndRemove)
         {
             if (values.Length < removeLength) return values;
@@ -156,10 +159,30 @@ namespace iXtensions.Extensions
 
         public static string SpaceCapitalLetter(this string value)
          => System.Text.RegularExpressions.Regex.Replace(value, "[A-Z]", " $0");
-        
-        
-         public static int[] CsvToIntArray(this string value)
-            => value.Split(',').Select(x => int.Parse(x)).ToArray();
+
+
+        public static int[] CsvToIntArray(this string value)
+           => value.Split(',').Select(x => int.Parse(x)).ToArray();
+
+
+        public static string RemoveAccent(this string text)
+        {
+            var normalizedString = text.Normalize(NormalizationForm.FormD);
+            var stringBuilder = new StringBuilder(capacity: normalizedString.Length);
+
+            for (int i = 0; i < normalizedString.Length; i++)
+            {
+                char c = normalizedString[i];
+                var unicodeCategory = CharUnicodeInfo.GetUnicodeCategory(c);
+                if (unicodeCategory != UnicodeCategory.NonSpacingMark)
+                {
+                    stringBuilder.Append(c);
+                }
+            }
+            return stringBuilder
+                .ToString()
+                .Normalize(NormalizationForm.FormC);
+        }
 
 
     }
