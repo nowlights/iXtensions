@@ -25,6 +25,9 @@ namespace iXtensions.Extensions
                 return values.Remove(values.Length - removeLength);
             return values;
         }
+        
+        public static bool LastLenghtIs(this string Value, string Compare)
+            => Value == null ? false : Value.Substring(Value.Length - Compare.Length, Compare.Length) == Compare;
 
 
         public static bool EqualList(this string ValorVerify, params string[] Value)
