@@ -101,6 +101,42 @@ namespace iXtensions.Extensions
             else if (dt.Month == DateTime.Now.Month) return $"este mês, {dt.ToString("dd/MM")} às {dt.ToString("HH:mm")}";
             else return $"Em {dt.ToString("dd/MM/yyyy")} às {dt.ToString("HH:mm")}";
         }
+        
+        public static string TimeAgo(this DateTime dt)
+        {
+            string baseReturn = "Há {0} {1} atrás";
+            TimeSpan span = DateTime.Now - dt;
+            if (span.Days > 365)
+            {
+                int years = (span.Days / 365);
+                if (span.Days % 365 != 0)
+                    years += 1;
+                return String.Format(baseReturn,
+                years, years == 1 ? "ano" : "anos");
+            }
+            if (span.Days > 30)
+            {
+                int months = (span.Days / 30);
+                if (span.Days % 31 != 0)
+                    months += 1;
+                return String.Format(baseReturn,
+                months, months == 1 ? "mês" : "meses");
+            }
+            if (span.Days > 0)
+                return String.Format(baseReturn,
+                span.Days, span.Days == 1 ? "dia" : "dias");
+            if (span.Hours > 0)
+                return String.Format(baseReturn,
+                span.Hours, span.Hours == 1 ? "hora" : "horas");
+            if (span.Minutes > 0)
+                return String.Format(baseReturn,
+                span.Minutes, span.Minutes == 1 ? "minuto" : "minutos");
+            if (span.Seconds > 5)
+                return String.Format("Há {0} segundos atrás", span.Seconds);
+            if (span.Seconds <= 5)
+                return "Agora pouco";
+            return string.Empty;
+        }
 
         public static string GetDayName(this DateTime Value)
             => CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(Value.DayOfWeek).ToFirstUpper();
