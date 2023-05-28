@@ -25,19 +25,11 @@ namespace iXtensions.Extensions
                 return values.Remove(values.Length - removeLength);
             return values;
         }
-        
+
         public static bool LastLenghtIs(this string Value, string Compare)
             => Value == null ? false : Value.Substring(Value.Length - Compare.Length, Compare.Length) == Compare;
 
 
-        public static bool EqualList(this string ValorVerify, params string[] Value)
-        {
-            int r = 0;
-            foreach (var i in Value)
-                if (i == ValorVerify)
-                    r++;
-            return r >= 1;
-        }
 
         public static bool MultContains(this string ValorVerify, params string[] Value)
         {
@@ -49,27 +41,20 @@ namespace iXtensions.Extensions
         }
 
 
-        public static string ToUpperIfNotNull(this string value)
-            => String.IsNullOrEmpty(value) ? value : value.ToUpper();
-
-
 
         public static string ToFirstUpper(this string value)
             => char.ToUpper(value[0]) + value.Substring(1);
 
 
         public static string FirstLetter(this string Value, int ToSize = 1, string returnWith = "")
-            => !String.IsNullOrEmpty(Value) && Value.Length >= 1 && Value.Length > ToSize ? Value.Substring(0, ToSize) + returnWith : Value;
+            => !string.IsNullOrEmpty(Value) && Value.Length >= 1 && Value.Length > ToSize ? Value.Substring(0, ToSize) + returnWith : Value;
 
 
         public static bool LengthRange(this string Value, int start, int end)
             => Value.Length >= start && Value.Length <= end;
 
         public static bool isInt(this string Value)
-        {
-            try { Convert.ToDouble(Value); return true; }
-            catch (System.Exception) { return false; }
-        }
+            => Int32.TryParse(Value, out _);
 
         public static bool isNumberPhone(this string Value)
         {
@@ -85,13 +70,11 @@ namespace iXtensions.Extensions
         {
             foreach (string i in Verify)
                 if (Value.ToLower() == i.ToLower()) return i;
-
             return Return;
         }
 
         public static string IfNullThenReturn(this string Value, string Return)
             => String.IsNullOrEmpty(Value) ? Return : Value;
-
 
 
         public static string ReplaceToEmpty(this string Value, params string[] ValuesToReplace)
@@ -104,14 +87,6 @@ namespace iXtensions.Extensions
             => String.IsNullOrWhiteSpace(value) ? true : (value.MultContains("<", ">", "javascript", "onchange", "onclick") ? false : true);
 
 
-        public static bool ContainsStringInListString(List<string> listValue, string value)
-        {
-            foreach (var i in listValue)
-                if (i == value)
-                    return true;
-
-            return false;
-        }
 
         /// <summary>
         /// Valida uma string de inteiros separados por virgula, ex.: 1,2,3,4, verifica se todos são numeros validos
