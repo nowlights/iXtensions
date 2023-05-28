@@ -17,25 +17,25 @@ namespace iXtensions.Extensions
             => String.IsNullOrEmpty(Value) ? "" : Value.Remove(Value.Length - removeLength);
 
 
-        public static string RemoveLastIfValuesIs(this string values, int removeLength, string ValueToVerifyAndRemove)
+        public static string RemoveLastIfValuesIs(this string values, int removeLength, string valueToVerifyAndRemove)
         {
             if (values.Length < removeLength) return values;
             string x = values.Substring(values.Length - removeLength, removeLength);
-            if (x == ValueToVerifyAndRemove)
+            if (x == valueToVerifyAndRemove)
                 return values.Remove(values.Length - removeLength);
             return values;
         }
 
-        public static bool LastLenghtIs(this string Value, string Compare)
-            => Value == null ? false : Value.Substring(Value.Length - Compare.Length, Compare.Length) == Compare;
+        public static bool LastLenghtIs(this string value, string compare)
+            => value == null ? false : value.Substring(value.Length - compare.Length, compare.Length) == compare;
 
 
 
-        public static bool MultContains(this string ValorVerify, params string[] Value)
+        public static bool MultContains(this string valueToVerify, params string[] values)
         {
             int r = 0;
-            foreach (string i in Value)
-                if (ValorVerify.Contains(i))
+            foreach (string i in values)
+                if (valueToVerify.Contains(i))
                     r++;
             return r >= 1;
         }
@@ -45,7 +45,16 @@ namespace iXtensions.Extensions
         public static string ToFirstUpper(this string value)
             => char.ToUpper(value[0]) + value.Substring(1);
 
+        public static string ToCamelCase(this string value)
+        {
+            string[] words = value.Split(' ');
 
+            for (int i = 1; i < words.Length; i++)
+                words[i] = char.ToUpper(words[i][0]) + words[i].Substring(1);
+            return string.Join("", words);
+        }
+
+   
         public static string FirstLetter(this string Value, int ToSize = 1, string returnWith = "")
             => !string.IsNullOrEmpty(Value) && Value.Length >= 1 && Value.Length > ToSize ? Value.Substring(0, ToSize) + returnWith : Value;
 
@@ -77,7 +86,7 @@ namespace iXtensions.Extensions
             => String.IsNullOrEmpty(Value) ? Return : Value;
 
 
-        public static string ReplaceToEmpty(this string Value, params string[] ValuesToReplace)
+        public static string RemoveWhiteSpace(this string Value, params string[] ValuesToReplace)
         {
             foreach (var i in ValuesToReplace) Value = Value.Replace(i, "");
             return Value;
